@@ -1,0 +1,70 @@
+ion-toolbar {
+    --min-height: 56px;
+}
+
+ion-buttons.center {
+    justify-content: center;
+
+    ion-label {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 160px;
+        letter-spacing: 0;
+        text-transform: none;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+
+    ion-icon {
+        font-size: 14px;
+    }
+}
+
+ion-card.suite {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 15px;
+
+    ion-card-header {
+        width: 100%;
+        height: 220px;
+
+        ion-thumbnail {
+            --size: 100%;
+            --border-radius: 6px;
+        }
+    }
+
+    ion-card-content {
+        ion-item {
+            --background: transparent;
+            --padding-start: 0;
+            --inner-padding-end: 0;
+
+            .title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #000;
+            }
+
+            .local {
+                font-size: 0.8rem;
+            }
+
+            .price {
+                font-size: 0.9rem;
+
+                b {
+                    font-weight: 500;
+                    color: #01754c;
+                }
+            }
+
+            span {
+                display: block;
+            }
+        }
+    }
+}

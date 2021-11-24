@@ -1,0 +1,71 @@
+<ion-content color="primary">
+
+  <div class="chat">
+
+    <div [class]="msg.class + ' animate__animated animate__fadeIn'" *ngFor="let msg of messages">{{ msg.text }}</div>
+
+    <!-- <div class="chat-left">
+
+      <span>Que bom ver você aqui!</span>
+
+    </div>
+
+    <div class="chat-left">
+
+      <span>Sua conta será atrelada ao seu CPF.</span>
+
+    </div>
+
+    <div class="chat-left">
+
+      <span>Por isso, digite o número do seu CPF.</span>
+
+    </div>
+
+    <div class="chat-right top">
+
+      <span>051.507.811-50</span>
+
+    </div>
+
+    <div class="chat-left top">
+
+      <span>Como gostaria de ser chamado? Pode ser pelo seu nome ou apelido.</span>
+
+    </div> -->
+
+  </div>
+
+  <div [class]="typingClass + ' animate__animated animate__fadeIn'" *ngIf="typing">
+
+    <ion-spinner name="dots"></ion-spinner>
+
+  </div>
+
+  <ion-fab slot="fixed" vertical="top" horizontal="start">
+
+    <ion-fab-button color="primary">
+
+      <ion-icon name="arrow-back"></ion-icon>
+
+    </ion-fab-button>
+
+  </ion-fab>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+
+  <div class="animate__animated animate__fadeInUp" *ngIf="!typing">
+
+    <ion-input [placeholder]="placeholder" [mask]="mask" [maxlength]="maxlength" [(ngModel)]="value"></ion-input>
+
+    <ion-button fill="clear" color="medium" (click)="sendCPF()">
+
+      <ion-icon slot="icon-only" name="send"></ion-icon>
+
+    </ion-button>
+
+  </div>
+
+</ion-footer>

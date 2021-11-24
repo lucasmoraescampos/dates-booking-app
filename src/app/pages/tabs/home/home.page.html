@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-toolbar>
+
+    <ion-buttons class="center">
+
+      <ion-button color="primary">
+
+        <ion-icon slot="start" name="location-outline"></ion-icon>
+
+        <ion-label>Avenida Afonso Pena, 140, Vila dos Alpes...</ion-label>
+
+        <ion-icon slot="end" name="chevron-down-outline"></ion-icon>
+
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content color="light">
+
+  <ion-card class="suite" button="true" *ngFor="let suite of suites">
+
+    <ion-card-header>
+
+      <ion-thumbnail>
+
+        <img [src]="suite.image">
+
+      </ion-thumbnail>
+
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item lines="none" detail="true">
+
+        <ion-label class="ion-text-wrap ion-no-margin">
+
+          <span class="title">{{ suite.name }}</span>
+
+          <span class="local">{{ suite.local }}</span>
+
+          <span class="price"><b>R$ {{ suite.min_value }}</b> - <b>R$ {{ suite.max_value }}</b></span>
+
+        </ion-label>
+
+      </ion-item>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+
+    <ion-fab-button color="light">
+
+      <ion-icon name="map-outline" color="primary"></ion-icon>
+
+    </ion-fab-button>
+
+  </ion-fab>
+
+</ion-content>
