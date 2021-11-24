@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalMapComponent } from 'src/app/components/modals/modal-map/modal-map.component';
 
 @Component({
   selector: 'app-home',
@@ -38,10 +40,22 @@ export class HomePage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {
 
+  }
+
+  public async map() {
+
+    const modal = await this.modalCtrl.create({
+      component: ModalMapComponent
+    });
+
+    return await modal.present();
+    
   }
 
 }

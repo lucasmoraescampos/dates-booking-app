@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
+import { Geolocation } from '@capacitor/geolocation';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
@@ -18,6 +19,8 @@ export class AppComponent implements OnInit {
       StatusBar.setStyle({ style: Style.Light });
     }
     
+    // Geolocation.getCurrentPosition().then(res => console.log(res))
+
   }
 
 }
