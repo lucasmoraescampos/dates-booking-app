@@ -1,0 +1,141 @@
+<ion-content color="light">
+
+  <ion-fab class="back" slot="fixed" horizontal="start" vertical="top">
+
+    <ion-fab-button color="light" (click)="back()">
+
+      <ion-icon md="arrow-back-outline" ios="chevron-back-outline"></ion-icon>
+
+    </ion-fab-button>
+
+  </ion-fab>
+
+  <ion-thumbnail class="cover">
+
+    <img src="https://www.guiademoteis.com.br/Images/moteis/492-Mont-Blanc-Motel/fachada/48df4757-7ca2-4d55-a532-17bd7bc73796-fachada.png" />
+
+  </ion-thumbnail>
+
+  <ion-list class="info">
+
+    <ion-item lines="none" button="true">
+
+      <ion-thumbnail slot="start">
+
+        <img src="https://www.guiademoteis.com.br/Images/moteis/492-Mont-Blanc-Motel/logo-grande/Mont-Blanc-Motel-logo-grande.jpg" />
+    
+      </ion-thumbnail>
+
+      <ion-label class="ion-text-wrap">
+
+        <span class="title">Mont Blanc Motel</span>
+
+        <span class="local">Vila Brasília - Aparecida de Goiânia</span>
+
+        <span class="stars">
+
+          <ion-icon name="star" color="warning"></ion-icon>
+
+          <ion-icon name="star" color="warning"></ion-icon>
+
+          <ion-icon name="star" color="warning"></ion-icon>
+
+          <ion-icon name="star" color="warning"></ion-icon>
+          
+          <ion-icon name="star" color="warning"></ion-icon>
+
+        </span>
+
+        <span class="price"><b>R$ 72.5</b> - <b>R$ 379</b></span>
+
+      </ion-label>
+
+    </ion-item>
+
+  </ion-list>
+
+  <ion-card class="suite" *ngFor="let a of array">
+
+    <ion-card-header>
+
+      <ion-thumbnail>
+
+        <img src="https://www.guiademoteis.com.br/Images/moteis/492-Mont-Blanc-Motel/suites/13750-Madame-Champagne/fotos/foto3-suites.jpg">
+
+      </ion-thumbnail>
+
+      <ion-card-title>Suíte Madame Champagne - Itens</ion-card-title>
+
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        garagem privativa
+      
+      </span>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        internet wi-fi
+      
+      </span>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        ar-condicionado
+      
+      </span>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        frigobar
+      
+      </span>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        secador de cabelo
+      
+      </span>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        ar-condicionado split
+      
+      </span>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        cama king size
+      
+      </span>
+
+      <span class="tag">
+              
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        
+        canal de música
+      
+      </span>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
