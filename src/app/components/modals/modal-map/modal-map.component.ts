@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar } from '@capacitor/status-bar';
 import { ModalController } from '@ionic/angular';
@@ -14,6 +14,8 @@ declare const google: any;
 export class ModalMapComponent implements OnInit {
 
   @ViewChild('map', { static: true }) mapElement: ElementRef;
+
+  @Input() suites: any[];
 
   private latLng: any;
 
@@ -43,6 +45,14 @@ export class ModalMapComponent implements OnInit {
     }
   }
 
+  onSwiper(swiper) {
+    console.log(swiper);
+  }
+
+  onSlideChange() {
+    console.log('slide change');
+  }
+
   public dismiss() {
     this.modalCtrl.dismiss();
   }
@@ -55,7 +65,7 @@ export class ModalMapComponent implements OnInit {
 
     const mapOptions = {
       center: this.latLng,
-      zoom: 16,
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
       zoomControl: false,
@@ -75,10 +85,16 @@ export class ModalMapComponent implements OnInit {
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
     this.marker = new google.maps.Marker({
+      position: this.latLng,
       map: this.map,
-      draggable: false,
-      animation: google.maps.Animation.DROP,
-      position: this.latLng
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillOpacity: 0.9,
+        strokeWeight: 3,
+        fillColor: '#5384ED',
+        strokeColor: '#FFFFFF'
+      },
     });
 
   }

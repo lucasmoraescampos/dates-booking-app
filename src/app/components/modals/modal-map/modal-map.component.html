@@ -10,6 +10,48 @@
 
   </ion-fab>
 
-  <div class="map" #map></div>
+  <ion-fab class="locate" slot="fixed" vertical="bottom" horizontal="end">
+
+    <ion-fab-button color="light">
+
+      <ion-icon name="locate-outline"></ion-icon>
+
+    </ion-fab-button>
+
+  </ion-fab>
+
+  <div class="map animate__animated animate__fadeIn" #map></div>
+
+  <swiper class="swiper-cards animate__animated animate__fadeInRight" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+
+    <ng-template swiperSlide *ngFor="let suite of suites">
+      
+      <ion-card>
+
+        <ion-card-content>
+
+          <ion-thumbnail>
+
+            <img [src]="suite.image" />
+
+          </ion-thumbnail>
+
+          <ion-label class="ion-text-wrap">
+
+            <span class="title">{{ suite.name }}</span>
+  
+            <span class="local">{{ suite.local }}</span>
+  
+            <span class="price"><b>R$ {{ suite.min_value }}</b> - <b>R$ {{ suite.max_value }}</b></span>
+  
+          </ion-label>
+
+        </ion-card-content>
+
+      </ion-card>
+
+    </ng-template>
+
+  </swiper>
 
 </ion-content>

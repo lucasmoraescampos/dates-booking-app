@@ -26,6 +26,10 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "~animate.css/animate.min.css";
 
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 ion-searchbar.address {
     .searchbar-input-container {
         height: 46px;

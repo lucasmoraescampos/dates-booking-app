@@ -51,7 +51,10 @@ export class HomePage implements OnInit {
   public async map() {
 
     const modal = await this.modalCtrl.create({
-      component: ModalMapComponent
+      component: ModalMapComponent,
+      componentProps: {
+        suites: this.suites
+      }
     });
 
     return await modal.present();
