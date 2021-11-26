@@ -63,22 +63,39 @@ ion-card.suite {
     box-shadow: none;
 
     ion-card-header {
-        padding-bottom: 5px;
+        padding: 15px 0 5px;
 
         ion-thumbnail {
             --border-radius: 6px;
             width: 100%;
             height: 220px;
+            padding: 0 15px;
         }
 
         ion-card-title {
             font-size: 0.9rem;
             text-align: center;
         }
+
+        ion-card-subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            margin-top: 4px;
+
+            b {
+                font-size: 1rem;
+                font-weight: 500;
+                margin-left: 4px;
+                color: #01754c;
+            }
+        }
     }
 
     ion-card-content {
         text-align: center;
+
         .tag {
             display: inline-flex;
             align-items: center;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { ModalMapComponent } from 'src/app/components/modals/modal-map/modal-map.component';
 
 @Component({
@@ -41,11 +41,16 @@ export class HomePage implements OnInit {
   ];
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
 
+  }
+
+  public navSuites() {
+    this.navCtrl.navigateRoot('/suites');
   }
 
   public async map() {

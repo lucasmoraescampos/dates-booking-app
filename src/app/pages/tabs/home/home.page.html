@@ -22,7 +22,7 @@
 
 <ion-content color="light">
 
-  <ion-card class="suite" button="true" routerLink="/suites" *ngFor="let suite of suites">
+  <ion-card class="suite" (click)="navSuites()" *ngFor="let suite of suites">
 
     <ion-card-header>
 
