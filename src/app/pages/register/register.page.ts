@@ -20,39 +20,111 @@ export class RegisterPage implements OnInit {
 
   public typingClass: string;
 
-  public placeholder: string;
-
-  public mask: string;
-
   public value: string;
 
-  public maxlength: number;
+  public step: number;
 
   constructor() { }
 
   ngOnInit() {
 
     if (Capacitor.isNativePlatform()) {
-      StatusBar.setBackgroundColor({ color: '#0a0a0a' });
+      StatusBar.setBackgroundColor({ color: '#4A246D' });
       StatusBar.setStyle({ style: Style.Dark });
-      NavigationBar.setColor({ color: '#0a0a0a', darkButtons: false });
+      NavigationBar.setColor({ color: '#4A246D', darkButtons: false });
     }
 
     this.step1();
 
   }
 
-  public step1() {
+  public send() {
+
+    this.messages.push({
+      class: 'chat-right top',
+      text: this.value
+    });
+
+    this.scrollToBottom();
+
+    this.typingClass = 'typing top';
+
+    this.typing = true;
+
+    if (this.step == 1) {
+
+      if (UtilsHelper.validateDocumentNumber(this.value)) {
+
+        this.step2();
+
+      }
+      
+      else {
+
+        setTimeout(() => {
+
+          this.typingClass = 'typing';
+        
+          this.messages.push({
+            class: 'chat-left top',
+            text: 'Ops!'
+          });
+
+          this.scrollToBottom();
+      
+        }, 1000);
+
+        setTimeout(() => {
+        
+          this.messages.push({
+            class: 'chat-left',
+            text: 'O número que você digitou não é um CPF válido'
+          });
+
+          this.scrollToBottom();
+    
+        }, 2500);
+
+        setTimeout(() => {
+        
+          this.messages.push({
+            class: 'chat-left',
+            text: 'Por favor, digite um número de CPF válido'
+          });
+
+          this.typing = false;
+
+          this.scrollToBottom();
+    
+        }, 4000);
+
+      }
+
+    }
+
+    else if (this.step == 2) {
+
+      this.step3();
+
+    }
+
+    else if (this.step == 3) {
+
+      this.step4();
+
+    }
+
+  }
+
+  private step1() {
+
+    this.step = 1;
 
     this.typing = true;
 
     this.typingClass = 'typing top';
 
-    this.placeholder = 'Digite o número do seu CPF'
-
-    this.mask = '000.000.000-00';
-
-    this.maxlength = 14;
+    this.value = '';
 
     setTimeout(() => {
 
@@ -106,69 +178,127 @@ export class RegisterPage implements OnInit {
 
   }
 
-  public sendCPF() {
+  private step2() {
 
-    this.messages.push({
-      class: 'chat-right top',
-      text: this.value
-    });
-
-    this.scrollToBottom();
-
-    this.typingClass = 'typing top';
+    this.step = 2;
 
     this.typing = true;
 
-    if (UtilsHelper.validateDocumentNumber(this.value)) {
+    this.typingClass = 'typing top';
 
-      this.placeholder = 'Digite o número do seu CPF'
+    this.value = '';
 
-      this.mask = '000.000.000-00';
+    setTimeout(() => {
 
-      this.maxlength = 14;
-
-    }
-    
-    else {
-
-      setTimeout(() => {
-
-        this.typingClass = 'typing';
+      console.log(this.content)
       
-        this.messages.push({
-          class: 'chat-left top',
-          text: 'Ops!'
-        });
+      this.messages.push({
+        class: 'chat-left top',
+        text: 'Digite seu nome completo'
+      });
 
-        this.scrollToBottom();
-    
-      }, 1000);
+      this.typingClass = 'typing';
 
-      setTimeout(() => {
+      this.typing = false;
+
+      this.scrollToBottom();
+
+    }, 1000);
+
+  }
+
+  private step3() {
+
+    this.step = 3;
+
+    this.typing = true;
+
+    this.typingClass = 'typing top';
+
+    this.value = '';
+
+    setTimeout(() => {
+
+      console.log(this.content)
       
-        this.messages.push({
-          class: 'chat-left',
-          text: 'O número que você digitou não é um CPF válido'
-        });
+      this.messages.push({
+        class: 'chat-left top',
+        text: 'Quase lá! 😉'
+      });
 
-        this.scrollToBottom();
-  
-      }, 2500);
+      this.typingClass = 'typing';
 
-      setTimeout(() => {
+      this.scrollToBottom();
+
+    }, 1000);
+
+    setTimeout(() => {
       
-        this.messages.push({
-          class: 'chat-left',
-          text: 'Por favor, digite um número de CPF válido'
-        });
+      this.messages.push({
+        class: 'chat-left',
+        text: 'Você vai precisar de um email para acessar sua conta'
+      });
 
-        this.typing = false;
+      this.scrollToBottom();
 
-        this.scrollToBottom();
-  
-      }, 4000);
+    }, 2000);
 
-    }
+    setTimeout(() => {
+
+      console.log(this.content)
+      
+      this.messages.push({
+        class: 'chat-left',
+        text: 'Digite o seu email'
+      });
+
+      this.typing = false;
+
+      this.scrollToBottom();
+
+    }, 3500);
+
+  }
+
+  private step4() {
+
+    this.step = 4;
+
+    this.typing = true;
+
+    this.typingClass = 'typing top';
+
+    this.value = '';
+
+    setTimeout(() => {
+
+      console.log(this.content)
+      
+      this.messages.push({
+        class: 'chat-left top',
+        text: 'Cadastre uma senha para acessar sua conta'
+      });
+
+      this.typingClass = 'typing';
+
+      this.scrollToBottom();
+
+    }, 1000);
+
+    setTimeout(() => {
+
+      console.log(this.content)
+      
+      this.messages.push({
+        class: 'chat-left',
+        text: 'Digite uma senha'
+      });
+
+      this.typing = false;
+
+      this.scrollToBottom();
+
+    }, 2500);
 
   }
 

@@ -56,11 +56,17 @@
 
 <ion-footer class="ion-no-border">
 
-  <div class="animate__animated animate__fadeInUp" *ngIf="!typing">
+  <div class="animate__animated animate__fadeIn" *ngIf="!typing">
 
-    <ion-input [placeholder]="placeholder" [mask]="mask" [maxlength]="maxlength" [(ngModel)]="value"></ion-input>
+    <ion-input inputmode="numeric" placeholder="Digite o número do seu CPF" mask="000.000.000-00" maxlength="14" [(ngModel)]="value" *ngIf="step == 1"></ion-input>
 
-    <ion-button fill="clear" color="medium" (click)="sendCPF()">
+    <ion-input placeholder="Digite seu nome" maxlength="100" [(ngModel)]="value" *ngIf="step == 2"></ion-input>
+    
+    <ion-input inputmode="email" placeholder="Digite seu email" maxlength="255" [(ngModel)]="value" *ngIf="step == 3"></ion-input>
+
+    <ion-input placeholder="Digite uma senha" maxlength="255" [(ngModel)]="value" *ngIf="step == 4"></ion-input>
+
+    <ion-button fill="clear" color="medium" (click)="send()">
 
       <ion-icon slot="icon-only" name="send"></ion-icon>
 
