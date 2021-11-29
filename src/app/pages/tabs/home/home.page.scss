@@ -5,19 +5,23 @@ ion-toolbar {
 ion-buttons.center {
     justify-content: center;
 
-    ion-label {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        max-width: 160px;
-        letter-spacing: 0;
-        text-transform: none;
-        font-size: 0.8rem;
-        font-weight: 400;
-    }
+    ion-button {
+        height: 40px;
 
-    ion-icon {
-        font-size: 14px;
+        ion-label {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 160px;
+            letter-spacing: 0;
+            text-transform: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        ion-icon {
+            font-size: 14px;
+        }
     }
 }
 
