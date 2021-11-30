@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterPageRoutingModule } from './register-routing.module';
 import { RegisterPage } from './register.page';
 import { NgxMaskIonicModule } from 'ngx-mask-ionic';
+import { ModalRegistrationAcceptancesModule } from 'src/app/components/modals/modal-registration-acceptances/modal-registration-acceptances.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { NgxMaskIonicModule } from 'ngx-mask-ionic';
     FormsModule,
     IonicModule,
     RegisterPageRoutingModule,
-    NgxMaskIonicModule.forRoot()
+    NgxMaskIonicModule.forRoot(),
+    ModalRegistrationAcceptancesModule
   ],
   declarations: [RegisterPage]
 })

@@ -63,3 +63,13 @@ ion-button {
         height: 55px;
     }
 }
+
+ion-modal.registration-acceptances {
+    --height: 100px;
+    --border-radius: 10px 10px 0 0;
+
+    .modal-wrapper {
+        position: absolute;
+        bottom: 0;
+    }
+}

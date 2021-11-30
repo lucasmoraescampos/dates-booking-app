@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar';
-import { IonContent } from '@ionic/angular';
+import { IonContent, ModalController } from '@ionic/angular';
+import { ModalRegistrationAcceptancesComponent } from 'src/app/components/modals/modal-registration-acceptances/modal-registration-acceptances.component';
 import { UtilsHelper } from 'src/app/helpers/utils.helper';
 
 @Component({
@@ -24,7 +25,9 @@ export class RegisterPage implements OnInit {
 
   public step: number;
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {
 
@@ -34,7 +37,7 @@ export class RegisterPage implements OnInit {
       NavigationBar.setColor({ color: '#4A246D', darkButtons: false });
     }
 
-    this.step1();
+    this.step4();
 
   }
 
@@ -52,66 +55,15 @@ export class RegisterPage implements OnInit {
     this.typing = true;
 
     if (this.step == 1) {
-
-      if (UtilsHelper.validateDocumentNumber(this.value)) {
-
-        this.step2();
-
-      }
-      
-      else {
-
-        setTimeout(() => {
-
-          this.typingClass = 'typing';
-        
-          this.messages.push({
-            class: 'chat-left top',
-            text: 'Ops!'
-          });
-
-          this.scrollToBottom();
-      
-        }, 1000);
-
-        setTimeout(() => {
-        
-          this.messages.push({
-            class: 'chat-left',
-            text: 'O número que você digitou não é um CPF válido'
-          });
-
-          this.scrollToBottom();
-    
-        }, 2500);
-
-        setTimeout(() => {
-        
-          this.messages.push({
-            class: 'chat-left',
-            text: 'Por favor, digite um número de CPF válido'
-          });
-
-          this.typing = false;
-
-          this.scrollToBottom();
-    
-        }, 4000);
-
-      }
-
+      this.step2();
     }
 
     else if (this.step == 2) {
-
-      this.step3();
-
+      this.step3();      
     }
 
     else if (this.step == 3) {
-
       this.step4();
-
     }
 
   }
@@ -127,8 +79,6 @@ export class RegisterPage implements OnInit {
     this.value = '';
 
     setTimeout(() => {
-
-      console.log(this.content)
       
       this.messages.push({
         class: 'chat-left top',
@@ -156,7 +106,7 @@ export class RegisterPage implements OnInit {
       
       this.messages.push({
         class: 'chat-left',
-        text: 'Sua conta será atrelada ao seu CPF.'
+        text: 'Vamos começar o seu cadastro'
       });
 
       this.scrollToBottom();
@@ -167,7 +117,7 @@ export class RegisterPage implements OnInit {
       
       this.messages.push({
         class: 'chat-left',
-        text: 'Por isso, digite o número do seu CPF.'
+        text: 'Por favor, informe seu nome'
       });
 
       this.typing = false;
@@ -189,41 +139,10 @@ export class RegisterPage implements OnInit {
     this.value = '';
 
     setTimeout(() => {
-
-      console.log(this.content)
       
       this.messages.push({
         class: 'chat-left top',
-        text: 'Digite seu nome completo'
-      });
-
-      this.typingClass = 'typing';
-
-      this.typing = false;
-
-      this.scrollToBottom();
-
-    }, 1000);
-
-  }
-
-  private step3() {
-
-    this.step = 3;
-
-    this.typing = true;
-
-    this.typingClass = 'typing top';
-
-    this.value = '';
-
-    setTimeout(() => {
-
-      console.log(this.content)
-      
-      this.messages.push({
-        class: 'chat-left top',
-        text: 'Quase lá! 😉'
+        text: 'Você vai precisar de um email e senha para acessar sua conta'
       });
 
       this.typingClass = 'typing';
@@ -236,62 +155,7 @@ export class RegisterPage implements OnInit {
       
       this.messages.push({
         class: 'chat-left',
-        text: 'Você vai precisar de um email para acessar sua conta'
-      });
-
-      this.scrollToBottom();
-
-    }, 2000);
-
-    setTimeout(() => {
-
-      console.log(this.content)
-      
-      this.messages.push({
-        class: 'chat-left',
-        text: 'Digite o seu email'
-      });
-
-      this.typing = false;
-
-      this.scrollToBottom();
-
-    }, 3500);
-
-  }
-
-  private step4() {
-
-    this.step = 4;
-
-    this.typing = true;
-
-    this.typingClass = 'typing top';
-
-    this.value = '';
-
-    setTimeout(() => {
-
-      console.log(this.content)
-      
-      this.messages.push({
-        class: 'chat-left top',
-        text: 'Cadastre uma senha para acessar sua conta'
-      });
-
-      this.typingClass = 'typing';
-
-      this.scrollToBottom();
-
-    }, 1000);
-
-    setTimeout(() => {
-
-      console.log(this.content)
-      
-      this.messages.push({
-        class: 'chat-left',
-        text: 'Digite uma senha'
+        text: 'Por isso, informe seu email'
       });
 
       this.typing = false;
@@ -300,6 +164,101 @@ export class RegisterPage implements OnInit {
 
     }, 2500);
 
+  }
+
+  private step3() {
+
+    this.typing = true;
+
+    this.typingClass = 'typing top';
+
+    if (UtilsHelper.validateEmail(this.value)) {
+
+      this.step = 3;
+
+      this.value = '';
+
+      setTimeout(() => {
+        
+        this.messages.push({
+          class: 'chat-left top',
+          text: 'Agora é só criar uma senha segura'
+        });
+
+        this.typingClass = 'typing';
+
+        this.scrollToBottom();
+
+      }, 1000);
+
+      setTimeout(() => {
+        
+        this.messages.push({
+          class: 'chat-left',
+          text: 'Informe uma senha'
+        });
+
+        this.typing = false;
+
+        this.scrollToBottom();
+
+      }, 2500);
+
+    }
+
+    else {
+
+      setTimeout(() => {
+        
+        this.messages.push({
+          class: 'chat-left top',
+          text: 'Ops! 🤔'
+        });
+
+        this.typingClass = 'typing';
+
+        this.scrollToBottom();
+
+      }, 1000);
+
+      setTimeout(() => {
+        
+        this.messages.push({
+          class: 'chat-left',
+          text: 'Este email não é valido'
+        });
+
+        this.scrollToBottom();
+
+      }, 2000);
+
+      setTimeout(() => {
+        
+        this.messages.push({
+          class: 'chat-left',
+          text: 'Por favor, informe um email válido'
+        });
+
+        this.typing = false;
+
+        this.scrollToBottom();
+
+      }, 3500);
+
+    }
+
+  }
+
+  private async step4() {
+
+    const modal = await this.modalCtrl.create({
+      component: ModalRegistrationAcceptancesComponent,
+      backdropDismiss: false,
+      cssClass: 'registration-acceptances'
+    });
+
+    return await modal.present();
+    
   }
 
   private scrollToBottom() {
