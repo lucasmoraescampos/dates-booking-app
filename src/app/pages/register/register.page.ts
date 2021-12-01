@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
+import { Keyboard } from '@capacitor/keyboard';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar';
-import { IonContent, ModalController } from '@ionic/angular';
+import { IonContent, ModalController, NavController } from '@ionic/angular';
 import { ModalRegistrationAcceptancesComponent } from 'src/app/components/modals/modal-registration-acceptances/modal-registration-acceptances.component';
 import { UtilsHelper } from 'src/app/helpers/utils.helper';
 
@@ -26,7 +27,8 @@ export class RegisterPage implements OnInit {
   public step: number;
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -35,9 +37,19 @@ export class RegisterPage implements OnInit {
       StatusBar.setBackgroundColor({ color: '#4A246D' });
       StatusBar.setStyle({ style: Style.Dark });
       NavigationBar.setColor({ color: '#4A246D', darkButtons: false });
+      Keyboard.addListener('keyboardWillShow', () => this.scrollToBottom());
     }
 
-    this.step4();
+    this.step1();
+
+  }
+
+  ionViewDidLeave() {
+    
+    if (Capacitor.isNativePlatform()) {
+      StatusBar.setBackgroundColor({ color: '#FAFAFA' });
+      StatusBar.setStyle({ style: Style.Light });
+    }
 
   }
 
@@ -249,16 +261,43 @@ export class RegisterPage implements OnInit {
 
   }
 
-  private async step4() {
+  private step4() {
 
-    const modal = await this.modalCtrl.create({
-      component: ModalRegistrationAcceptancesComponent,
-      backdropDismiss: false,
-      cssClass: 'registration-acceptances'
-    });
+    this.step = 4;
 
-    return await modal.present();
-    
+    this.typing = true;
+
+    this.typingClass = 'typing top';
+
+    this.value = '';
+
+    setTimeout(() => {
+      
+      this.messages.push({
+        class: 'chat-left',
+        text: 'Finalizando... 🥰'
+      });
+
+      this.scrollToBottom();
+
+      this.typing = false;
+
+    }, 1000);
+
+    setTimeout(async () => {
+
+      const modal = await this.modalCtrl.create({
+        component: ModalRegistrationAcceptancesComponent,
+        backdropDismiss: false,
+        cssClass: 'registration-acceptances'
+      });
+
+      modal.onDidDismiss().then(() => this.navCtrl.navigateRoot('/home'));
+  
+      return await modal.present();
+
+    }, 1500);
+
   }
 
   private scrollToBottom() {

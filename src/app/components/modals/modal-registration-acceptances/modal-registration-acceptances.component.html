@@ -4,9 +4,9 @@
 
     <ion-item lines="none">
 
-      <ion-checkbox slot="start" mode="ios"></ion-checkbox>
+      <ion-checkbox slot="start" mode="ios" [(ngModel)]="ok"></ion-checkbox>
 
-      <ion-label class="ion-text-wrap">
+      <ion-label class="ion-text-wrap ion-no-margin">
         
         Li e concordo com os <a href="#">Termos de Uso e a Política de Privacidade</a>
       
@@ -17,3 +17,9 @@
   </ion-list>
 
 </ion-content>
+
+<ion-footer class="ion-no-border ion-padding">
+
+  <ion-button expand="block" [disabled]="!ok" (click)="confirm()">Confirmar</ion-button>
+
+</ion-footer>

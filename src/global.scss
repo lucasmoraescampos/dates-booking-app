@@ -47,9 +47,9 @@ ion-button {
     --border-width: 1px;
     --border-radius: 25px;
     --box-shadow: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
-    letter-spacing: -0.03em;
+    letter-spacing: 0em;
     text-transform: none;
     height: 50px;
 
@@ -60,12 +60,12 @@ ion-button {
 
     &[size="large"] {
         font-size: 16px;
-        height: 55px;
+        height: 58px;
     }
 }
 
 ion-modal.registration-acceptances {
-    --height: 100px;
+    --height: 160px;
     --border-radius: 10px 10px 0 0;
 
     .modal-wrapper {

@@ -34,7 +34,7 @@
 
     <ion-input placeholder="Digite uma senha" maxlength="255" [(ngModel)]="value" *ngIf="step == 3"></ion-input>
 
-    <ion-button fill="clear" color="medium" (click)="send()">
+    <ion-button fill="clear" color="medium" (click)="send()" *ngIf="step != 4">
 
       <ion-icon slot="icon-only" name="send"></ion-icon>
 

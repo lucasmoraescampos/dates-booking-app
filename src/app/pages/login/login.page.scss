@@ -1,0 +1,35 @@
+ion-content {
+    --background: linear-gradient(0deg, #251236 0%, #4A246D 100%);
+}
+
+ion-list {
+    background: transparent;
+
+    ion-item {
+        &.email {
+            border-radius: 25px 25px 0 0;
+        }
+
+        &.password {
+            border-radius: 0 0 25px 25px;
+        }
+
+        ion-label {
+            font-size: 0.8rem;
+        }
+
+        ion-input {
+            font-size: 0.9rem;
+        }
+    }
+
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}

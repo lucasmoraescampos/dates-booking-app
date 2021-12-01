@@ -2,7 +2,7 @@
 
   <div class="ion-padding-horizontal">
 
-    <ion-button color="primary" fill="outline" expand="block">
+    <ion-button color="primary" fill="outline" expand="block" (click)="login()">
       
       <ion-icon name="log-in-outline" slot="start"></ion-icon>
       
@@ -14,7 +14,7 @@
 
   <ion-list>
 
-    <ion-item class="profile" lines="none">
+    <ion-item class="profile" lines="none" *ngIf="false">
 
       <ion-avatar slot="start">
 

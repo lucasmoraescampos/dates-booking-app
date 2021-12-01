@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-registration-acceptances',
@@ -9,7 +10,11 @@ import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar';
 })
 export class ModalRegistrationAcceptancesComponent implements OnInit {
 
-  constructor() { }
+  public ok: boolean = true;
+
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {
 
@@ -17,6 +22,10 @@ export class ModalRegistrationAcceptancesComponent implements OnInit {
       NavigationBar.setColor({ color: '#FAFAFA', darkButtons: true });
     }
     
+  }
+
+  public confirm() {
+    this.modalCtrl.dismiss();
   }
 
 }
